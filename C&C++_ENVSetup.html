@@ -26,7 +26,9 @@
 <div id="md" style="display: none;">
 <!-- markdown -->
 ##[[转载]](http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html)使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置
+
  ![](http://petehenry.github.io/img/1.png)
+
 最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。
 
 这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...
@@ -53,6 +55,8 @@ MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GN
 我的笔记本电脑上使用的是[官网](http://sourceforge.net/projects/mingw/files/)的下载地址安装MinGW，公司的电脑则使用[离线版](http://www.downxia.com/downinfo/25570.html)的下载地址安装MinGW...
 
 安装 MinGW 的过程则一路下一步，这里我安装在 ``C:\MinGW``，最后运行它的界面
+
+ ![](http://petehenry.github.io/img/2.png)
 
 到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 ```Path``` 中
 
@@ -142,8 +146,9 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 <!-- content -->
 <h2 id="httpwwwchenhaizancnarticlesublimettextt3tandtmingwtsettctdevelopmenttenvironmenthtmlsublimetextmingwcc"><a href="http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html">[转载]</a>使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置</h2>
 
-<p><img src="http://petehenry.github.io/img/1.png" alt="" title="">
-最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
+<p><img src="http://petehenry.github.io/img/1.png" alt="" title=""></p>
+
+<p>最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
 
 <p>这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...</p>
 
@@ -174,6 +179,8 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 <p>我的笔记本电脑上使用的是<a href="http://sourceforge.net/projects/mingw/files/">官网</a>的下载地址安装MinGW，公司的电脑则使用<a href="http://www.downxia.com/downinfo/25570.html">离线版</a>的下载地址安装MinGW...</p>
 
 <p>安装 MinGW 的过程则一路下一步，这里我安装在 <code>C:\MinGW</code>，最后运行它的界面</p>
+
+<p><img src="http://petehenry.github.io/img/2.png" alt="" title=""></p>
 
 <p>到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 <code>Path</code> 中</p>
 
