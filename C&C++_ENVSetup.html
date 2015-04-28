@@ -28,7 +28,6 @@
 ##[[转载]](http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html)使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置
 
  ![](http://petehenry.github.io/img/1.png)
-
 最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。
 
 这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...
@@ -57,15 +56,16 @@ MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GN
 安装 MinGW 的过程则一路下一步，这里我安装在 ``C:\MinGW``，最后运行它的界面
 
  ![](http://petehenry.github.io/img/2.png)
-
 到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 ```Path``` 中
+
 
 设置了环境变量，可能不会生效，这样就需要重启电脑...
 
 如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...
+ ![](http://petehenry.github.io/img/4.png)
 
 代码：
-```
+```{bat}
 @set path=C:/MinGW/bin;%PATH%; 
 @echo ---== MinGW环境变量设置成功 ==---
 @cmd 
@@ -75,37 +75,37 @@ MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GN
 然后运行 CMD (开始-> 运行-> Cmd)，输入：```mingw-get``` 后则会运行 MinGW 界面，这里说明变量设置成功...
 
 然后输入：```g++ -v```，用于检测安装 g++ 有没有成功...
-
+ ![](http://petehenry.github.io/img/5.png)
 如果没有出现上图的信息，说明我们还没下载包...
 
 如果在 MinGW 界面安装 Package 的话，则速度很慢，感觉没动一样...
 
 所以这里我们使用在 CMD 中安装，打开 CMD 后，输入命令：```mingw-get install gcc g++```，即开始下载相应的包：
-
+ ![](http://petehenry.github.io/img/6.png)
 下载过程中，文件较多，但起码速度快很多，等待的时间不多...
 
 下载完成后，重新在 CMD 中输入 ```g++ -v```，则会打印出 g++ 版本信息，说明安装成功...
 
 ##三、SublimeText 配置
 因为 Sublime Text 中已经有了默认的编译器相关配置，所以配置好环境变量后 C/C++ 是直接可以编译运行的，我们写一个简单的程序测试一下
-
-
+ ![](http://petehenry.github.io/img/7.png)
 Ctrl+B 构建后，显示编译信息，如果出现下面的信息
-
+ ![](http://petehenry.github.io/img/8.png)
 则说明编译不成功，提示 g++ 命令不存在，这里说明我们的 g++ 没有安装成功...
 
 如果编译成功，则提示：
-
+ ![](http://petehenry.github.io/img/9.png)
 我们通过 ```Ctrl+shift+B```，运行代码：
-
+ ![](http://petehenry.github.io/img/10.png)
 如果编译过程中出现错误，将会提示错误信息：
-
+ ![](http://petehenry.github.io/img/11.png)
 ##四、.sublime-build
 这里注意在 SublimeText 3 之前的版本，可能需要增加 ```.sublime-build```文件
 
 比如在 Sublime Text 2 中 ```Tools –> Build System –> New Build System```…
 
 然后将以下内容粘贴过去
+ ![](http://petehenry.github.io/img/12.png)
 ```
 {
     "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
@@ -139,16 +139,15 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 到这里就基本结束了
 
 五、总结
-SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的...
+SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的..
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
 <!-- content -->
 <h2 id="httpwwwchenhaizancnarticlesublimettextt3tandtmingwtsettctdevelopmenttenvironmenthtmlsublimetextmingwcc"><a href="http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html">[转载]</a>使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置</h2>
 
-<p><img src="http://petehenry.github.io/img/1.png" alt="" title=""></p>
-
-<p>最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
+<p><img src="http://petehenry.github.io/img/1.png" alt="" title="">
+最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
 
 <p>这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...</p>
 
@@ -180,17 +179,17 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 
 <p>安装 MinGW 的过程则一路下一步，这里我安装在 <code>C:\MinGW</code>，最后运行它的界面</p>
 
-<p><img src="http://petehenry.github.io/img/2.png" alt="" title=""></p>
-
-<p>到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 <code>Path</code> 中</p>
+<p><img src="http://petehenry.github.io/img/2.png" alt="" title="">
+到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 <code>Path</code> 中</p>
 
 <p>设置了环境变量，可能不会生效，这样就需要重启电脑...</p>
 
-<p>如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...</p>
+<p>如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...
+ <img src="http://petehenry.github.io/img/4.png" alt="" title=""></p>
 
 <p>代码：</p>
 
-<pre><code>@set path=C:/MinGW/bin;%PATH%; 
+<pre><code class="{bat}">@set path=C:/MinGW/bin;%PATH%; 
 @echo ---== MinGW环境变量设置成功 ==---
 @cmd 
 </code></pre>
@@ -199,31 +198,32 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 
 <p>然后运行 CMD (开始-&gt; 运行-&gt; Cmd)，输入：<code>mingw-get</code> 后则会运行 MinGW 界面，这里说明变量设置成功...</p>
 
-<p>然后输入：<code>g++ -v</code>，用于检测安装 g++ 有没有成功...</p>
-
-<p>如果没有出现上图的信息，说明我们还没下载包...</p>
+<p>然后输入：<code>g++ -v</code>，用于检测安装 g++ 有没有成功...
+ <img src="http://petehenry.github.io/img/5.png" alt="" title="">
+如果没有出现上图的信息，说明我们还没下载包...</p>
 
 <p>如果在 MinGW 界面安装 Package 的话，则速度很慢，感觉没动一样...</p>
 
-<p>所以这里我们使用在 CMD 中安装，打开 CMD 后，输入命令：<code>mingw-get install gcc g++</code>，即开始下载相应的包：</p>
-
-<p>下载过程中，文件较多，但起码速度快很多，等待的时间不多...</p>
+<p>所以这里我们使用在 CMD 中安装，打开 CMD 后，输入命令：<code>mingw-get install gcc g++</code>，即开始下载相应的包：
+ <img src="http://petehenry.github.io/img/6.png" alt="" title="">
+下载过程中，文件较多，但起码速度快很多，等待的时间不多...</p>
 
 <p>下载完成后，重新在 CMD 中输入 <code>g++ -v</code>，则会打印出 g++ 版本信息，说明安装成功...</p>
 
 <h2 id="sublimetext">三、SublimeText 配置</h2>
 
-<p>因为 Sublime Text 中已经有了默认的编译器相关配置，所以配置好环境变量后 C/C++ 是直接可以编译运行的，我们写一个简单的程序测试一下</p>
+<p>因为 Sublime Text 中已经有了默认的编译器相关配置，所以配置好环境变量后 C/C++ 是直接可以编译运行的，我们写一个简单的程序测试一下
+ <img src="http://petehenry.github.io/img/7.png" alt="" title="">
+Ctrl+B 构建后，显示编译信息，如果出现下面的信息
+ <img src="http://petehenry.github.io/img/8.png" alt="" title="">
+则说明编译不成功，提示 g++ 命令不存在，这里说明我们的 g++ 没有安装成功...</p>
 
-<p>Ctrl+B 构建后，显示编译信息，如果出现下面的信息</p>
-
-<p>则说明编译不成功，提示 g++ 命令不存在，这里说明我们的 g++ 没有安装成功...</p>
-
-<p>如果编译成功，则提示：</p>
-
-<p>我们通过 <code>Ctrl+shift+B</code>，运行代码：</p>
-
-<p>如果编译过程中出现错误，将会提示错误信息：</p>
+<p>如果编译成功，则提示：
+ <img src="http://petehenry.github.io/img/9.png" alt="" title="">
+我们通过 <code>Ctrl+shift+B</code>，运行代码：
+ <img src="http://petehenry.github.io/img/10.png" alt="" title="">
+如果编译过程中出现错误，将会提示错误信息：
+ <img src="http://petehenry.github.io/img/11.png" alt="" title=""></p>
 
 <h2 id="sublimebuild">四、.sublime-build</h2>
 
@@ -231,7 +231,8 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 
 <p>比如在 Sublime Text 2 中 <code>Tools –&gt; Build System –&gt; New Build System</code>…</p>
 
-<p>然后将以下内容粘贴过去</p>
+<p>然后将以下内容粘贴过去
+ <img src="http://petehenry.github.io/img/12.png" alt="" title=""></p>
 
 <pre><code>{
     "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
@@ -266,7 +267,7 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 <p>到这里就基本结束了</p>
 
 <p>五、总结
-SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的...</p>
+SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的..</p>
 <!-- content end -->
 </div>
 <br>
