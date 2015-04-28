@@ -42,23 +42,23 @@
 ##二、安装MinGW
 MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GNU工具集导入库的集合，允许你在GNU/Linux和Windows平台生成本地的Windows程序而不需要第三方C运行时库 - 百度百科
 
-*[官网](http://sourceforge.net/projects/mingw/files/)下载
-*[离线版](http://www.downxia.com/downinfo/25570.html)下载
-*[百度网盘]()下载
+* [官网](http://sourceforge.net/projects/mingw/files/)下载
+* [离线版](http://www.downxia.com/downinfo/25570.html)下载
+* [百度网盘]()下载
 
-在①下载的是MinGW下载器，安装之后需要下载相应的包，我在尝试用它提供的界面上下载时，发现速度很慢，感觉就像没动一样..
+[官网](http://sourceforge.net/projects/mingw/files/)下载的是MinGW下载器，安装之后需要下载相应的包，我在尝试用它提供的界面上下载时，发现速度很慢，感觉就像没动一样..
 
-在②下载的是已经包含了一些包...
+[离线版](http://www.downxia.com/downinfo/25570.html)下载的是已经包含了一些包...
 
-我在我的笔记本电脑就使用①的下载地址安装MinGW（公司的电脑则使用②的下载地址安装MinGW）...
+我的笔记本电脑上使用的是[官网](http://sourceforge.net/projects/mingw/files/)的下载地址安装MinGW，公司的电脑则使用[离线版](http://www.downxia.com/downinfo/25570.html)的下载地址安装MinGW...
 
-安装MinGW的过程则一路下一步，这里我安装在C:\MinGW，最后运行它的界面
+安装 MinGW 的过程则一路下一步，这里我安装在 ``C:\MinGW``，最后运行它的界面
 
-到这里后，我们将MinGW安装目录下的Bin目录所在路径添加到环境变量Path中
+到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 ```Path``` 中
 
 设置了环境变量，可能不会生效，这样就需要重启电脑...
 
-如果不想重启电脑，这里我们可以在CMD中设置，这样能起到强制生效而不需重启电脑，这里编写cmd语句...
+如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...
 
 代码：
 ```
@@ -66,43 +66,43 @@ MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GN
 @echo ---== MinGW环境变量设置成功 ==---
 @cmd 
 ```
-这里要注意的是保存为.dat格式的文件，这里保存为：MinGW.dat，保存后双击运行即可...
+这里要注意的是保存为 .dat 格式的文件，这里保存为：```MinGW.dat```，保存后双击运行即可...
 
-然后运行CMD(开始-> 运行-> Cmd)，输入：mingw-get后则会运行MinGW界面，这里说明变量设置成功...
+然后运行 CMD (开始-> 运行-> Cmd)，输入：```mingw-get``` 后则会运行 MinGW 界面，这里说明变量设置成功...
 
-然后输入：g++ -v，用于检测安装g++有没有成功...
+然后输入：```g++ -v```，用于检测安装 g++ 有没有成功...
 
 如果没有出现上图的信息，说明我们还没下载包...
 
-如果在MinGW界面安装Package的话，则速度很慢，感觉没动一样...
+如果在 MinGW 界面安装 Package 的话，则速度很慢，感觉没动一样...
 
-所以这里我们使用在CMD中安装，打开CMD后，输入命令：mingw-get install gcc g++，即开始下载相应的包：
+所以这里我们使用在 CMD 中安装，打开 CMD 后，输入命令：```mingw-get install gcc g++```，即开始下载相应的包：
 
 下载过程中，文件较多，但起码速度快很多，等待的时间不多...
 
-下载完成后，重新在CMD中输入g++ -v，则会打印出g++版本信息，说明安装成功...
+下载完成后，重新在 CMD 中输入 ```g++ -v```，则会打印出 g++ 版本信息，说明安装成功...
 
-三、SublimeText 配置
-因为Sublime Text中已经有了默认的编译器相关配置，所以配置好环境变量后C/C++是直接可以编译运行的，我们写一个简单的程序测试一下
+##三、SublimeText 配置
+因为 Sublime Text 中已经有了默认的编译器相关配置，所以配置好环境变量后 C/C++ 是直接可以编译运行的，我们写一个简单的程序测试一下
 
 
-Ctrl+B构建后，显示编译信息，如果出现下面的信息
+Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 
-则说明编译不成功，提示g++命令不存在，这里说明我们的g++没有安装成功...
+则说明编译不成功，提示 g++ 命令不存在，这里说明我们的 g++ 没有安装成功...
 
 如果编译成功，则提示：
 
-我们通过`Ctrl+shift+B，运行代码：
+我们通过 ```Ctrl+shift+B```，运行代码：
 
 如果编译过程中出现错误，将会提示错误信息：
 
-四、.sublime-build
-这里注意在SublimeText 3之前的版本，可能需要增加.sublime-build文件
+##四、.sublime-build
+这里注意在 SublimeText 3 之前的版本，可能需要增加 ```.sublime-build```文件
 
-比如在Sublime Text 2中Tools –> Build System –> New Build System…
+比如在 Sublime Text 2 中 ```Tools –> Build System –> New Build System```…
 
 然后将以下内容粘贴过去
-```
+~~~~{bat}
 {
     "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
@@ -121,21 +121,21 @@ Ctrl+B构建后，显示编译信息，如果出现下面的信息
         }
     ]
 }
-```
-然后保存，保存的名字自己随便起，比如：C.sublime-build，注意后缀一定为.sublime-build。
+~~~~
+然后保存，保存的名字自己随便起，比如：```C.sublime-build```，注意后缀一定为 ```.sublime-build```。
 
-该文件被保存在Sublime Text 2目录下的Data\Packages\User中。
+该文件被保存在 Sublime Text 2 目录下的 Data\Packages\User 中。
 
-然后在Tools –> Build System中选中该文件。
+然后在 Tools –> Build System 中选中该文件。
 
-重启Sublime text 2 即可开始编译C了。
+重启 Sublime text 2  即可开始编译C了。
 
-Ctrl+B构建，Ctrl+shift+B运行。
+```Ctrl+B``` 构建，```Ctrl+shift+B``` 运行。
 
 到这里就基本结束了
 
 五、总结
-SublimeText界面、功能上都好强大啊...折腾一下C/C++的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在MinGW，如果使用SublimeText 2版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用SublimeText 3版本的...
+SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的...
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
@@ -160,23 +160,25 @@ SublimeText界面、功能上都好强大啊...折腾一下C/C++的开发环境�
 
 <p>MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GNU工具集导入库的集合，允许你在GNU/Linux和Windows平台生成本地的Windows程序而不需要第三方C运行时库 - 百度百科</p>
 
-<p>*<a href="http://sourceforge.net/projects/mingw/files/">官网</a>下载
-*<a href="http://www.downxia.com/downinfo/25570.html">离线版</a>下载
-*<a href="">百度网盘</a>下载</p>
+<ul>
+<li><a href="http://sourceforge.net/projects/mingw/files/">官网</a>下载</li>
+<li><a href="http://www.downxia.com/downinfo/25570.html">离线版</a>下载</li>
+<li><a href="">百度网盘</a>下载</li>
+</ul>
 
-<p>在①下载的是MinGW下载器，安装之后需要下载相应的包，我在尝试用它提供的界面上下载时，发现速度很慢，感觉就像没动一样..</p>
+<p><a href="http://sourceforge.net/projects/mingw/files/">官网</a>下载的是MinGW下载器，安装之后需要下载相应的包，我在尝试用它提供的界面上下载时，发现速度很慢，感觉就像没动一样..</p>
 
-<p>在②下载的是已经包含了一些包...</p>
+<p><a href="http://www.downxia.com/downinfo/25570.html">离线版</a>下载的是已经包含了一些包...</p>
 
-<p>我在我的笔记本电脑就使用①的下载地址安装MinGW（公司的电脑则使用②的下载地址安装MinGW）...</p>
+<p>我的笔记本电脑上使用的是<a href="http://sourceforge.net/projects/mingw/files/">官网</a>的下载地址安装MinGW，公司的电脑则使用<a href="http://www.downxia.com/downinfo/25570.html">离线版</a>的下载地址安装MinGW...</p>
 
-<p>安装MinGW的过程则一路下一步，这里我安装在C:\MinGW，最后运行它的界面</p>
+<p>安装 MinGW 的过程则一路下一步，这里我安装在 <code>C:\MinGW</code>，最后运行它的界面</p>
 
-<p>到这里后，我们将MinGW安装目录下的Bin目录所在路径添加到环境变量Path中</p>
+<p>到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 <code>Path</code> 中</p>
 
 <p>设置了环境变量，可能不会生效，这样就需要重启电脑...</p>
 
-<p>如果不想重启电脑，这里我们可以在CMD中设置，这样能起到强制生效而不需重启电脑，这里编写cmd语句...</p>
+<p>如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...</p>
 
 <p>代码：</p>
 
@@ -185,76 +187,75 @@ SublimeText界面、功能上都好强大啊...折腾一下C/C++的开发环境�
 @cmd 
 </code></pre>
 
-<p>这里要注意的是保存为.dat格式的文件，这里保存为：MinGW.dat，保存后双击运行即可...</p>
+<p>这里要注意的是保存为 .dat 格式的文件，这里保存为：<code>MinGW.dat</code>，保存后双击运行即可...</p>
 
-<p>然后运行CMD(开始-&gt; 运行-&gt; Cmd)，输入：mingw-get后则会运行MinGW界面，这里说明变量设置成功...</p>
+<p>然后运行 CMD (开始-&gt; 运行-&gt; Cmd)，输入：<code>mingw-get</code> 后则会运行 MinGW 界面，这里说明变量设置成功...</p>
 
-<p>然后输入：g++ -v，用于检测安装g++有没有成功...</p>
+<p>然后输入：<code>g++ -v</code>，用于检测安装 g++ 有没有成功...</p>
 
 <p>如果没有出现上图的信息，说明我们还没下载包...</p>
 
-<p>如果在MinGW界面安装Package的话，则速度很慢，感觉没动一样...</p>
+<p>如果在 MinGW 界面安装 Package 的话，则速度很慢，感觉没动一样...</p>
 
-<p>所以这里我们使用在CMD中安装，打开CMD后，输入命令：mingw-get install gcc g++，即开始下载相应的包：</p>
+<p>所以这里我们使用在 CMD 中安装，打开 CMD 后，输入命令：<code>mingw-get install gcc g++</code>，即开始下载相应的包：</p>
 
 <p>下载过程中，文件较多，但起码速度快很多，等待的时间不多...</p>
 
-<p>下载完成后，重新在CMD中输入g++ -v，则会打印出g++版本信息，说明安装成功...</p>
+<p>下载完成后，重新在 CMD 中输入 <code>g++ -v</code>，则会打印出 g++ 版本信息，说明安装成功...</p>
 
-<p>三、SublimeText 配置
-因为Sublime Text中已经有了默认的编译器相关配置，所以配置好环境变量后C/C++是直接可以编译运行的，我们写一个简单的程序测试一下</p>
+<h2 id="sublimetext">三、SublimeText 配置</h2>
 
-<p>Ctrl+B构建后，显示编译信息，如果出现下面的信息</p>
+<p>因为 Sublime Text 中已经有了默认的编译器相关配置，所以配置好环境变量后 C/C++ 是直接可以编译运行的，我们写一个简单的程序测试一下</p>
 
-<p>则说明编译不成功，提示g++命令不存在，这里说明我们的g++没有安装成功...</p>
+<p>Ctrl+B 构建后，显示编译信息，如果出现下面的信息</p>
+
+<p>则说明编译不成功，提示 g++ 命令不存在，这里说明我们的 g++ 没有安装成功...</p>
 
 <p>如果编译成功，则提示：</p>
 
-<p>我们通过`Ctrl+shift+B，运行代码：</p>
+<p>我们通过 <code>Ctrl+shift+B</code>，运行代码：</p>
 
 <p>如果编译过程中出现错误，将会提示错误信息：</p>
 
-<p>四、.sublime-build
-这里注意在SublimeText 3之前的版本，可能需要增加.sublime-build文件</p>
+<h2 id="sublimebuild">四、.sublime-build</h2>
 
-<p>比如在Sublime Text 2中Tools –&gt; Build System –&gt; New Build System…</p>
+<p>这里注意在 SublimeText 3 之前的版本，可能需要增加 <code>.sublime-build</code>文件</p>
 
-<p>然后将以下内容粘贴过去</p>
+<p>比如在 Sublime Text 2 中 <code>Tools –&gt; Build System –&gt; New Build System</code>…</p>
 
-<pre><code>{
-    "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
-    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-    "working_dir": "${file_path}",
+<p>然后将以下内容粘贴过去
+</p><pre><code class="language-bat">{
+    "cmd": ["g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}"],
+    "file</em>regex": "^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$",
+    "working<em>dir": "${file</em>path}",
     "selector": "source.c, source.c++",
     "shell": true,
     "variants":
     [
         {
             "name": "Run",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "cmd", "/c", "${file_path}/${file_base_name}"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}", "&amp;&amp;", "cmd", "/c", "${file</em>path}/${file<em>base</em>name}"]
         },
         {
             "name": "RunInCommand",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "start", "cmd", "/c", "${file_path}/${file_base_name} &amp; pause"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}", "&amp;&amp;", "start", "cmd", "/c", "${file</em>path}/${file<em>base</em>name} &amp; pause"]
         }
     ]
 }
-</code></pre>
+</code></pre>然后保存，保存的名字自己随便起，比如：<code>C.sublime-build</code>，注意后缀一定为 <code>.sublime-build</code>。<p></p>
 
-<p>然后保存，保存的名字自己随便起，比如：C.sublime-build，注意后缀一定为.sublime-build。</p>
+<p>该文件被保存在 Sublime Text 2 目录下的 Data\Packages\User 中。</p>
 
-<p>该文件被保存在Sublime Text 2目录下的Data\Packages\User中。</p>
+<p>然后在 Tools –&gt; Build System 中选中该文件。</p>
 
-<p>然后在Tools –&gt; Build System中选中该文件。</p>
+<p>重启 Sublime text 2  即可开始编译C了。</p>
 
-<p>重启Sublime text 2 即可开始编译C了。</p>
-
-<p>Ctrl+B构建，Ctrl+shift+B运行。</p>
+<p><code>Ctrl+B</code> 构建，<code>Ctrl+shift+B</code> 运行。</p>
 
 <p>到这里就基本结束了</p>
 
 <p>五、总结
-SublimeText界面、功能上都好强大啊...折腾一下C/C++的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在MinGW，如果使用SublimeText 2版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用SublimeText 3版本的...</p>
+SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环境也是挺有意义的...如果有人也像我一样折腾它，我想花最多的时间就是在 MinGW，如果使用 SublimeText 2 版本的，花在建新编译系统（.sublime-build）的时间也会很多...所以这里还是建议使用 SublimeText 3 版本的...</p>
 <!-- content end -->
 </div>
 <br>
