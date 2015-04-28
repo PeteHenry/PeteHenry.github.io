@@ -26,7 +26,7 @@
 <div id="md" style="display: none;">
 <!-- markdown -->
 ##[[转载]](http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html)使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置
-
+ ![](http://petehenry.github.io/img/1.png)
 最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。
 
 这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...
@@ -102,7 +102,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 比如在 Sublime Text 2 中 ```Tools –> Build System –> New Build System```…
 
 然后将以下内容粘贴过去
-~~~~{bat}
+```
 {
     "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
@@ -121,7 +121,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
         }
     ]
 }
-~~~~
+```
 然后保存，保存的名字自己随便起，比如：```C.sublime-build```，注意后缀一定为 ```.sublime-build```。
 
 该文件被保存在 Sublime Text 2 目录下的 Data\Packages\User 中。
@@ -142,7 +142,8 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 <!-- content -->
 <h2 id="httpwwwchenhaizancnarticlesublimettextt3tandtmingwtsettctdevelopmenttenvironmenthtmlsublimetextmingwcc"><a href="http://www.chenhaizan.cn/article-sublime~text~3~and~mingw~set~c~development~environment.html">[转载]</a>使用SublimeText和MinGW构建轻量级C/C++编译器的开发环境设置</h2>
 
-<p>最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
+<p><img src="http://petehenry.github.io/img/1.png" alt="" title="">
+最近因为学 C++ 的缘故，需要在电脑上安装C++的运行环境。而自己的笔记本已经有turbo C++和Microsoft Visual C++ 6.0这些编译C程序的开发工具了，不过虽然这些编译器虽然用起来很方便，但是在使用上感觉turbo C++界面很难看，一些熟悉的功能它没有，跟不上时代；VC++又太大了，界面也不习惯。而自己熟悉的就有Sublime Text，知道Sublime Text支持C的编译，但是还是需要电脑支持生成可执行文件的编译环境，这里就使用了MinGW。</p>
 
 <p>这里我们最终要实现的目的是：当在Sublime Text编写的C代码后，通过Ctrl+B能构建成功，Ctrl+shift+B能正常运行，但要成功，则需要有G++（C++编译器），而我们安装MinGW，就是让它提供G++...</p>
 
@@ -223,26 +224,29 @@ SublimeText 界面、功能上都好强大啊...折腾一下 C/C++ 的开发环�
 
 <p>比如在 Sublime Text 2 中 <code>Tools –&gt; Build System –&gt; New Build System</code>…</p>
 
-<p>然后将以下内容粘贴过去
-</p><pre><code class="language-bat">{
-    "cmd": ["g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}"],
-    "file</em>regex": "^(..[^:]<em>):([0-9]+):?([0-9]+)?:? (.</em>)$",
-    "working<em>dir": "${file</em>path}",
+<p>然后将以下内容粘贴过去</p>
+
+<pre><code>{
+    "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "working_dir": "${file_path}",
     "selector": "source.c, source.c++",
     "shell": true,
     "variants":
     [
         {
             "name": "Run",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}", "&amp;&amp;", "cmd", "/c", "${file</em>path}/${file<em>base</em>name}"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "cmd", "/c", "${file_path}/${file_base_name}"]
         },
         {
             "name": "RunInCommand",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file<em>path}/${file</em>base<em>name}", "&amp;&amp;", "start", "cmd", "/c", "${file</em>path}/${file<em>base</em>name} &amp; pause"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "start", "cmd", "/c", "${file_path}/${file_base_name} &amp; pause"]
         }
     ]
 }
-</code></pre>然后保存，保存的名字自己随便起，比如：<code>C.sublime-build</code>，注意后缀一定为 <code>.sublime-build</code>。<p></p>
+</code></pre>
+
+<p>然后保存，保存的名字自己随便起，比如：<code>C.sublime-build</code>，注意后缀一定为 <code>.sublime-build</code>。</p>
 
 <p>该文件被保存在 Sublime Text 2 目录下的 Data\Packages\User 中。</p>
 
