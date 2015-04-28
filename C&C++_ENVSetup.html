@@ -58,7 +58,6 @@ MinGW是一个可自由使用和自由发布的Windows特定头文件和使用GN
  ![](http://petehenry.github.io/img/2.png)
 到这里后，我们将 MinGW 安装目录下的 Bin 目录所在路径添加到环境变量 ```Path``` 中
 
-
 设置了环境变量，可能不会生效，这样就需要重启电脑...
 
 如果不想重启电脑，这里我们可以在 CMD 中设置，这样能起到强制生效而不需重启电脑，这里编写 cmd 语句...
@@ -100,7 +99,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 如果编译过程中出现错误，将会提示错误信息：
  ![](http://petehenry.github.io/img/11.png)
 ##四、.sublime-build
-这里注意在 SublimeText 3 之前的版本，可能需要增加 ```.sublime-build```文件（SublimeText 3 最好也添加下，否则不支持 C++ 11）
+这里注意在 SublimeText 3 之前的版本，可能需要增加 ```.sublime-build```文件（SublimeText 3 最好也添加下，否则不支持 C++ 11[std!=c++11]）
 
 在 Sublime Text 中 ```Tools –> Build System –> New Build System```…
 
@@ -108,7 +107,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
  ![](http://petehenry.github.io/img/12.png)
 ```
 {
-    "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
+    "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}"],
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     "working_dir": "${file_path}",
     "selector": "source.c, source.c++",
@@ -117,11 +116,11 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
     [
         {
             "name": "Run",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&&", "cmd", "/c", "${file_path}/${file_base_name}"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&&", "cmd", "/c", "${file_path}/${file_base_name}"]
         },
         {
             "name": "RunInCommand",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&&", "start", "cmd", "/c", "${file_path}/${file_base_name} & pause"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&&", "start", "cmd", "/c", "${file_path}/${file_base_name} & pause"]
         }
     ]
 }
@@ -224,7 +223,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 
 <h2 id="sublimebuild">四、.sublime-build</h2>
 
-<p>这里注意在 SublimeText 3 之前的版本，可能需要增加 <code>.sublime-build</code>文件（SublimeText 3 最好也添加下，否则不支持 C++ 11）</p>
+<p>这里注意在 SublimeText 3 之前的版本，可能需要增加 <code>.sublime-build</code>文件（SublimeText 3 最好也添加下，否则不支持 C++ 11[std!=c++11]）</p>
 
 <p>在 Sublime Text 中 <code>Tools –&gt; Build System –&gt; New Build System</code>…</p>
 
@@ -232,7 +231,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
  <img src="http://petehenry.github.io/img/12.png" alt="" title=""></p>
 
 <pre><code>{
-    "cmd": ["g++", "${file}", "-o", "${file_path}/${file_base_name}"],
+    "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}"],
     "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
     "working_dir": "${file_path}",
     "selector": "source.c, source.c++",
@@ -241,11 +240,11 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
     [
         {
             "name": "Run",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "cmd", "/c", "${file_path}/${file_base_name}"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "cmd", "/c", "${file_path}/${file_base_name}"]
         },
         {
             "name": "RunInCommand",
-            "cmd": ["cmd", "/c", "g++", "${file}", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "start", "cmd", "/c", "${file_path}/${file_base_name} &amp; pause"]
+            "cmd": ["cmd", "/c", "g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}", "&amp;&amp;", "start", "cmd", "/c", "${file_path}/${file_base_name} &amp; pause"]
         }
     ]
 }
