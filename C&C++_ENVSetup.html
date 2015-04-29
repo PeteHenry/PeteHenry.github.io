@@ -106,7 +106,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 
 然后将以下内容粘贴过去
  ![](http://petehenry.github.io/img/12.png)
-与图片上内容又些不同，加了encoding = cp936（如果中文乱码，需要加，如果 SublimeText 已安装了 ConvertToUTF8 插件） 与 std = c++11（用来支持 c++11 环境，不用加此行代码）
+与图片上内容又些不同，加了```"encoding":"cp936",```（如果中文乱码，需要此行代码，如果 SublimeText 已安装了 ```ConvertToUTF8``` 插件，则无需此行代码） 与 ```"-std=c++11",```（用来支持 c++11 环境）
 ```
 {
     "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}"],
@@ -233,7 +233,7 @@ Ctrl+B 构建后，显示编译信息，如果出现下面的信息
 
 <p>然后将以下内容粘贴过去
  <img src="http://petehenry.github.io/img/12.png" alt="" title="">
-与图片上内容又些不同，加了encoding = cp936（如果中文乱码，需要加，如果 SublimeText 已安装了 ConvertToUTF8 插件） 与 std = c++11（用来支持 c++11 环境，不用加此行代码）</p>
+与图片上内容又些不同，加了<code>"encoding":"cp936",</code>（如果中文乱码，需要此行代码，如果 SublimeText 已安装了 <code>ConvertToUTF8</code> 插件，则无需此行代码） 与 <code>"-std=c++11",</code>（用来支持 c++11 环境）</p>
 
 <pre><code>{
     "cmd": ["g++", "${file}", "-std=c++11", "-o", "${file_path}/${file_base_name}"],
